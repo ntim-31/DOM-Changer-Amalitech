@@ -1,10 +1,14 @@
-function set() {
-	let background = document.getElementById("background").value;
-	let width = document.getElementById("width").value;
-	let height = document.getElementById("height").value;
-	let div = document.getElementById("modify");
+let elements = document.getElementsByName("cssProperty");
+let div = document.getElementById("modify");
 
-	div.style = `width:${width}; height:${height}; background: ${background};`;
+function set() {
+	let elementId = this.id;
+
+	let cssValue = this.value;
+
+	div.style[elementId] = cssValue;
 }
 
-document.getElementById("set").addEventListener("click", set);
+for (let index = 0; index < elements.length; index++) {
+	elements[index].addEventListener("change", set);
+}
